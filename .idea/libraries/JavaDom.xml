@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JavaDom">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../JavaDom/out/artifacts/JavaDom_jar/JavaDom.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

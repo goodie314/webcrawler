@@ -14,6 +14,6 @@ public class TestRunController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public void runTests() {
-        runner.runTests("http://www.kelnerlaw.com");
+//        runner.runTests("http://www.kelnerlaw.com");
     }
 }

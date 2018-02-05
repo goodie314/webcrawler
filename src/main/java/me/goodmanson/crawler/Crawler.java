@@ -10,48 +10,50 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Crawler {
 
-    public static TestCallback callback;
-
-    public static void main(String[] args) {
-        long start, end, parallel;
-        String url = "http://www.kelnerlaw.com/";
-
-//        List<Test> tests = new ArrayList<>();
-//        tests.add(new BaseTest());
-//        tests.add(new BaseTest());
-//        Crawler.callback = (page) -> tests.forEach(test -> test.onPageCrawl(page));
-//        List<Document> pages;
-//        Crawler crawler = new Crawler();
-//
-//        start = System.currentTimeMillis();
-//        pages = crawler.crawl(url);
-//        end = System.currentTimeMillis();
-//        parallel = end - start;
-//        System.out.println("Discovered " + pages.size() + " pages");
-//
-//        System.out.println("Parallel: " + parallel / 1000);
-
-    }
+    private static final Pattern domainPattern = Pattern.compile("https?://www.([^/?#]+)");
 
     public Crawler() {
     }
 
     public List<Document> crawl(String url, TestCallback onPageCrawl) {
+        Matcher matcher = domainPattern.matcher(url);
+        String baseURL;
+        if (matcher.find()) {
+            baseURL = matcher.group(1) != null ? matcher.group(1) : url;
+        }
+        else {
+            baseURL = url;
+        }
         Set<String> discoveredUrls = new HashSet<String>();
         discoveredUrls.add(url);
-        return this.crawl(url, url, discoveredUrls, onPageCrawl);
+
+        return this.crawl(url, baseURL, discoveredUrls, onPageCrawl);
     }
 
     private List<Document> crawl(String url, String baseUrl, final Set<String> discoveredUrls, TestCallback onPageCrawl) {
         Document page;
-        List<String> links;
         List<Document> pages;
+        Matcher domainMatcher;
+        String domain;
 
-        if (!url.contains(baseUrl) || url.contains("#")) {
+        domainMatcher = domainPattern.matcher(url);
+        if (domainMatcher.find()) {
+            domain = domainMatcher.group(1);
+            if (domain == null) {
+                return Collections.emptyList();
+            }
+        }
+        else {
+            return Collections.emptyList();
+        }
+
+        if (!domain.contains(baseUrl) || url.contains("#")) {
             return Collections.emptyList();
         }
 
@@ -67,6 +69,10 @@ public class Crawler {
                 .parallelStream()
                 .map(link -> link.absUrl("href"))
                 .filter(link -> {
+                    int index = link.indexOf("?");
+                    if (index > -1) {
+                        link = link.substring(0, index);
+                    }
                     if (!discoveredUrls.contains(link)) {
                         discoveredUrls.add(link);
                         return true;
@@ -90,13 +96,12 @@ public class Crawler {
 
         try {
             response = connection.execute();
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error retrieving page at " + url);
             return null;
         }
-
         page = Jsoup.parse(response.body(), response.url().toString());
-        onPageCrawl.onPageCrawl(page);
+        onPageCrawl.onPageCrawl(response.contentType(), page);
         return page;
     }
 }

@@ -11,18 +11,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TestScanner {
 
     private List<BaseTest> tests = new ArrayList<>();
+    private List<BeanDefinition> beanDefs = new ArrayList<>();
 
     public List<BaseTest> getTests() {
-        if (this.tests.isEmpty()) {
+        if (this.beanDefs.isEmpty()) {
             findAnnotatedClasses("me.goodmanson");
         }
 
-        return this.tests;
+        return this.beanDefs.stream()
+                .map(this::getTest)
+                .collect(Collectors.toList());
     }
 
     public void findAnnotatedClasses(String scanPackage) {
@@ -31,6 +35,7 @@ public class TestScanner {
         for (BeanDefinition beanDef : provider.findCandidateComponents(scanPackage)) {
             test = getTest(beanDef);
             this.tests.add(test);
+            this.beanDefs.add(beanDef);
         }
     }
 
@@ -48,6 +53,7 @@ public class TestScanner {
             Class<?> cl = Class.forName(beanDef.getBeanClassName());
             Test test = cl.getAnnotation(Test.class);
             baseTest = (BaseTest) cl.newInstance();
+            baseTest.setMetaInfo(test);
         } catch (Exception e) {
             System.err.println("Got exception: " + e.getMessage());
             return null;
