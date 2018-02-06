@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.TYPE)
 public @interface Test {
-
+    String checkName() default "";
     String[] onlyOnContentTypes() default {};
 }

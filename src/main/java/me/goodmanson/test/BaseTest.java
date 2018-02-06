@@ -9,6 +9,7 @@ public class BaseTest {
 
     private String[] onlyOnContentType;
     private Test metaInfo;
+    private String checkName;
 
     public void run() {
     }
@@ -33,6 +34,15 @@ public class BaseTest {
 
     public void setMetaInfo(Test metaInfo) {
         this.metaInfo = metaInfo;
+        this.setCheckName(metaInfo.checkName());
+    }
+
+    public String getCheckName() {
+        return checkName;
+    }
+
+    public void setCheckName(String checkName) {
+        this.checkName = checkName;
     }
 
     public boolean filter(String contentType) {

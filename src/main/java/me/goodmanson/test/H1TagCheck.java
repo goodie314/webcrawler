@@ -13,7 +13,7 @@ import java.util.List;
  * Created by u6062536 on 2/5/2018.
  */
 
-@Test(onlyOnContentTypes = {"text/html"})
+@Test(checkName = "H1 tag check", onlyOnContentTypes = {"text/html"})
 public class H1TagCheck extends BaseTest {
     int i = 0;
 
