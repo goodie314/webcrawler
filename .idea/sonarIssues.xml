@@ -33,6 +33,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/git_workspace/findlaw-order-tool/src/app/components/inventory-change/inventory-change.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/git_workspace/findlaw-order-tool/src/app/components/list-and-renewal-pricing/list-and-renewal-pricing.component.ts">
           <value>
             <set />
@@ -203,6 +208,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/test/BrokenExternalLinksTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/test/BrokenLinkCheck.java">
           <value>
             <set />
@@ -214,6 +224,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/test/MetaTitleTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/test/OpenGraphTaggingTest.java">
           <value>
             <set />
           </value>
