@@ -2,6 +2,8 @@ package me.goodmanson.runner;
 
 import me.goodmanson.crawler.Crawler;
 //import me.goodmanson.crawler.JavaDomCrawler;
+import me.goodmanson.dto.TestResponseDTO;
+import me.goodmanson.socket.SocketUtil;
 import me.goodmanson.test.BaseTest;
 import me.goodmanson.test.TestCallback;
 import org.jsoup.Connection;
@@ -9,6 +11,8 @@ import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.websocket.Session;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +23,9 @@ public class TestRunner {
     @Autowired
     private TestScanner testScanner;
 
+    @Autowired
+    private Crawler crawler;
+
     public static void main(String[] args) throws Exception {
         TestRunner runner = new TestRunner();
         runner.runTests("http://www.bainbridgefirm.com/");
@@ -26,7 +33,6 @@ public class TestRunner {
     }
 
     public void runTests(String url) {
-        this.testScanner = new TestScanner();
         final List<BaseTest> tests = this.testScanner.getTests();
 
         TestCallback callback = (contentType, page) -> {
@@ -40,16 +46,23 @@ public class TestRunner {
         crawler.crawl(url, callback);
     }
 
-//    public void runJavaDomTests(String url) {
-//        this.testScanner = new TestScanner();
-//        final List<BaseTest> tests = this.testScanner.getTests();
-//
-//        TestCallback callback = (page) -> tests.parallelStream().forEach(test -> test.onPageCrawl(page));
-//
-//        tests.forEach(BaseTest::run);
-//        JavaDomCrawler crawler = new JavaDomCrawler();
-//        crawler.crawl(url, callback);
-//    }
+    public void runTests(final String url, final List<BaseTest> tests, final Session session) {
+        Crawler crawler;
+
+        TestCallback callback = ((contentType, page) -> {
+            tests.parallelStream()
+                    .filter(test -> test.filter(contentType))
+                    .forEach(test -> {
+                        TestResponseDTO response = test.onPageCrawl(page);
+                        if (response != null) {
+                            SocketUtil.sendMessage(session, response.toJSON());
+                        }
+                    });
+        });
+        tests.forEach(BaseTest::run);
+        crawler = new Crawler();
+        crawler.crawl(url, callback);
+    }
 
     public static void timeJSoup() throws Exception {
         double start, end;

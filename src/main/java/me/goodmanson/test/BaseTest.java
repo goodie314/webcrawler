@@ -3,6 +3,7 @@ package me.goodmanson.test;
 
 //import javadom.page.Document;
 
+import me.goodmanson.dto.TestResponseDTO;
 import org.jsoup.nodes.Document;
 
 public class BaseTest {
@@ -14,7 +15,8 @@ public class BaseTest {
     public void run() {
     }
 
-    public void onPageCrawl(Document page) {
+    public TestResponseDTO onPageCrawl(Document page) {
+        return null;
     }
 
     public void onCrawlFinish() {

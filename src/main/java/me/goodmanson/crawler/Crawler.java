@@ -1,19 +1,17 @@
 package me.goodmanson.crawler;
 
-import me.goodmanson.test.BaseTest;
-import me.goodmanson.test.Test;
 import me.goodmanson.test.TestCallback;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@Service
 public class Crawler {
 
     private static final Pattern domainPattern = Pattern.compile("https?://www.([^/?#]+)");

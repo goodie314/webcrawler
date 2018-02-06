@@ -3,12 +3,37 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/git_workspace/entitlementPlatform-services/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/git_workspace/findlaw-order-tool/src/app/components/cob-questions/product-questions/static/static.component.css">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$USER_HOME$/git_workspace/findlaw-order-tool/src/app/components/cob-questions/product-questions/static/static.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/git_workspace/findlaw-order-tool/src/app/components/cob/cob.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/git_workspace/findlaw-order-tool/src/app/components/common/date-dropdown/date-dropdown.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/git_workspace/findlaw-order-tool/src/app/components/list-and-renewal-pricing/list-and-renewal-pricing.component.ts">
           <value>
             <set />
           </value>
@@ -58,6 +83,76 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../game-hub-service/src/main/java/me/goodmanson/endpoint/TestEndpoint.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/app.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/app.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/app.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/components/display-info/display-info.component.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/components/display-info/display-info.component.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/components/display-info/display-info.component.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/components/display-info/display-info.module.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/models/start-crawler-message.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/models/start-crawler.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/models/test-response-message.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/service/test.service.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../test-client/src/app/service/webcrawler-socket.service.ts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/controller/TestRunController.java">
           <value>
             <set />
@@ -73,12 +168,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/dto/StartCrawlerDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/dto/TestResponseDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/runner/TestRunner.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/runner/TestScanner.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/socket/CrawlerSocket.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/me/goodmanson/socket/SocketUtil.java">
           <value>
             <set />
           </value>
